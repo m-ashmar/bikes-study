@@ -20,32 +20,39 @@ This project analyzes bike-sharing data to understand usage patterns, weather im
 
 ```
 final_project/
-├── README.md                           # This file
-├── report_arabic.md                    # Comprehensive Arabic report
-├── figures/final_report/               # Selected visualizations
-│   ├── 01_top_start_stations.png      # Top starting stations
-│   ├── 02_member_bike_sunburst.png    # Member/bike type analysis
-│   ├── 06_trip_duration_histogram.png # Trip duration distribution
-│   ├── 10_trip_cost_distribution.png  # Cost distribution
-│   ├── 11_daily_revenue_trend.png     # Daily revenue trends
-│   ├── 13_geohash_heatmap.png         # Geographic usage heatmap
-│   ├── 17_cbd_usage_analysis.png      # CBD proximity analysis
-│   ├── 19_revenue_by_weather.png      # Weather impact on revenue
-│   ├── forecast_plot.png              # Revenue forecasting
-│   ├── forecast_components.png        # Forecast components
-│   ├── kmeans_pca.png                 # K-Means clustering
-│   ├── dbscan_tsne.png                # DBSCAN clustering
-│   └── agglomerative_dendrogram.png   # Hierarchical clustering
-├── engineered_data/                    # Processed datasets
-│   ├── spatial_features_block4.parquet # Spatial features
-│   ├── eda_block5_outputs.parquet     # EDA outputs
-│   ├── forecast_block6.csv            # Forecasting results
-│   └── clustered_block7.parquet       # Clustering results
-└── test_scripts/                       # Validation scripts
-    ├── test_block4.py                 # Spatial features tests
-    ├── test_block5.py                 # EDA tests
-    ├── test_block6.py                 # Forecasting tests
-    └── test_block7.py                 # Clustering tests
+├── README.md
+├── requirements.txt
+├── run_everything_single_script.py      # Runs full pipeline (Blocks 1,2,4,6,7)
+├── run_complete_analysis.py             # Runs Blocks 2,4,6,7 (requires merged sample)
+├── main_scripts/                        # Individual block scripts
+│   ├── spatial_merger_ultra_mini.py     # Block 1: merge & sample (creates merged_data/)
+│   ├── block2_final_validation.py       # Block 2: data validation
+│   ├── spatial_features_engineering.py  # Block 4: spatial features
+│   ├── block6_time_series_forecasting.py# Block 6: forecasting
+│   ├── block7_simple.py                 # Block 7: clustering (simple)
+│   ├── block7_clustering.py             # Block 7: clustering (alt)
+│   ├── spatial_merger.py                # Full merge (large)
+│   └── spatial_merger_supermini.py      # Smaller merge
+├── cleaned_data/                        # Input data (not tracked; place files here)
+│   ├── daily_bikes_trips.parquet
+│   ├── daily_weather_info.parquet
+│   ├── stations_info_dataset.parquet
+│   ├── stations_table.parquet
+│   ├── metro_bus_stops.parquet
+│   ├── shuttle_bus_stops.parquet
+│   ├── cbd_polygon.geojson
+│   └── parking_zones.geojson
+├── merged_data/                         # Created by Block 1 (ignored by git)
+├── engineered_data/                     # Processed datasets
+│   ├── spatial_features_block4.parquet
+│   ├── forecast_block6.csv
+│   └── clustered_block7.parquet
+├── figures/
+│   └── final_report/                    # Selected visualizations
+├── report_arabic.md
+├── report_arabic.pdf
+├── BLOCK1_SUMMARY.md
+└── tests.py
 ```
 
 ---
@@ -54,33 +61,46 @@ final_project/
 
 ### Prerequisites
 ```bash
-# Python 3.8+ required
+# Python 3.10+ recommended
 python --version
 
-# Install required packages
-pip install pandas geopandas plotly prophet scikit-learn numpy matplotlib seaborn
+# Create and activate a virtual environment (macOS/zsh)
+python -m venv .venv
+source .venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
 ```
 
-### Running the Analysis
+### Data
+Place the following files under `cleaned_data/` (not tracked by git):
+- daily_bikes_trips.parquet
+- daily_weather_info.parquet
+- stations_info_dataset.parquet
+- stations_table.parquet
+- metro_bus_stops.parquet
+- shuttle_bus_stops.parquet
+- cbd_polygon.geojson
+- parking_zones.geojson
 
-1. **Data Processing** (Blocks 1-4):
+### Run
+- Full pipeline (Blocks 1→7):
 ```bash
-python test_scripts/spatial_features_test.py
+python run_everything_single_script.py
 ```
 
-2. **Exploratory Analysis** (Block 5):
+- If you already have `merged_data/ultra_mini_merged_sample.parquet`:
 ```bash
-python test_scripts/test_block5.py
+python run_complete_analysis.py
 ```
 
-3. **Time Series Forecasting** (Block 6):
+- Run blocks individually:
 ```bash
-python test_scripts/test_block6.py
-```
-
-4. **Pattern Discovery** (Block 7):
-```bash
-python test_scripts/test_block7.py
+python main_scripts/spatial_merger_ultra_mini.py
+python main_scripts/block2_final_validation.py
+python main_scripts/spatial_features_engineering.py
+python main_scripts/block6_time_series_forecasting.py
+python main_scripts/block7_simple.py
 ```
 
 ---

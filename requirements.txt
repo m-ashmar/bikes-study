@@ -1,0 +1,12 @@
+pandas
+numpy
+geopandas
+shapely
+scikit-learn
+matplotlib
+seaborn
+prophet
+scipy
+pygeohash
+pyarrow
+plotly
