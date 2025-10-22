@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.env
+.venv
+venv/
+.envrc
+
+# OS/macOS
+.DS_Store
+.AppleDouble
+.Spotlight-V100
+.Trashes
+
+# Jupyter/Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# Data artifacts (keep small sample/engineered outputs tracked)
+cleaned_data/
+merged_data/
+engineered_data/
+figures/
+!engineered_data/forecast_block6.csv
+!engineered_data/spatial_features_block4.parquet
+!engineered_data/clustered_block7.parquet
+!figures/final_report/**
+
+# Caches and logs
+.cache/
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# Parquet and large binaries by default
+*.parquet
+*.feather
+*.csv
+*.geojson
+
+# Allow specific small tracked files
+!README.md
+!report_arabic.md
+!report_arabic.pdf
+!run_complete_analysis.py
+!run_everything_single_script.py
+!tests.py
+!main_scripts/**
+!BLOCK1_SUMMARY.md
+
