@@ -1,4 +1,4 @@
-# 🚴 Bike-Sharing Data Science Project
+# Bike-Sharing Data Science Project
 ## Final Graduation Project - Data Science
 
 ---
@@ -16,7 +16,7 @@ This project analyzes bike-sharing data to understand usage patterns, weather im
 
 ---
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 final_project/
@@ -50,7 +50,7 @@ final_project/
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 ```bash
@@ -114,7 +114,7 @@ python test_scripts/test_block7.py
 
 ---
 
-## 🔧 Technical Details
+##  Technical Details
 
 ### Data Processing Pipeline
 1. **Data Loading**: Multiple CSV files merged
@@ -151,7 +151,7 @@ python test_scripts/test_block7.py
 
 ---
 
-## 🎯 Business Insights
+##  Business Insights
 
 ### Short-term Recommendations (3-6 months)
 - **Distribution Optimization**: Increase bikes in high-usage areas
@@ -170,7 +170,7 @@ python test_scripts/test_block7.py
 
 ---
 
-## 🔍 Methodology
+##  Methodology
 
 ### Data Science Workflow
 1. **Problem Definition**: Understanding business objectives
@@ -192,7 +192,7 @@ python test_scripts/test_block7.py
 
 ---
 
-## 📝 Report
+##  Report
 
 The comprehensive Arabic report (`report_arabic.md`) includes:
 - Project introduction and objectives
@@ -204,7 +204,7 @@ The comprehensive Arabic report (`report_arabic.md`) includes:
 
 ---
 
-## ✅ Validation
+## Validation
 
 All components have been validated through:
 - [x] Automated test suites
@@ -215,7 +215,7 @@ All components have been validated through:
 
 ---
 
-## 📞 Contact
+##  Contact
 
 For questions or collaboration opportunities, please refer to the project documentation and test scripts for implementation details.
 
